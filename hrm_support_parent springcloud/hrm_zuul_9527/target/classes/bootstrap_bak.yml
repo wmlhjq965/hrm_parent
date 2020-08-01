@@ -1,22 +1,16 @@
-
 server:
-  port: 9527  #端口号
+  port: 9527
 spring:
   application:
-    name: zuul-gateway #服务名
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7001/eureka #Eureka url
-  instance:
-    instance-id: gateway-9527.com
-    prefer-ip-address: true
+    name: zuul-gateway
 zuul:
   routes:
     sysmanage.serviceId: hrm-sysmanage # 服务名
-    sysmanage.path: /sysmanage/** # 把myUser打头的所有请求都转发给user-provider 2
+    sysmanage.path: /sysmanage/** # 把myUser打头的所有请求都转发给user-provider
+    course.serviceId: hrm-course # 服务名
+    course.path: /course/** # 把myUser打头的所有请求都转发给user-provider
   ignored-services: "*" #所有服务都不允许以服务名来访问
-  prefix: "/services" #加一个统一前缀 1   http://localhost:9527/  1. services /  2. sysmanage / systemdictionary/list
+  prefix: "/services" #加一个统一前缀
   retryable: true #是否重试
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
@@ -31,3 +25,10 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 3000 # 熔断超时时长：3000ms
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true

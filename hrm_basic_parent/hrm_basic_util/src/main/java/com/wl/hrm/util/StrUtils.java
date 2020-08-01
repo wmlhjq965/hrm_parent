@@ -33,7 +33,7 @@ public class StrUtils {
         String[] strings = splitStr2StrArr(str,",");
         if (strings == null) return null;
 
-        List<Long> result = new ArrayList<>();
+        List<Long> result = new ArrayList<Long>();
         for (String string : strings) {
             result.add(Long.parseLong(string));
         }
@@ -50,7 +50,7 @@ public class StrUtils {
         String[] strings = splitStr2StrArr(str,split);
         if (strings == null) return null;
 
-        List<Long> result = new ArrayList<>();
+        List<Long> result = new ArrayList<Long>();
         for (String string : strings) {
             result.add(Long.parseLong(string));
         }
